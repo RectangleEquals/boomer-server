@@ -7,7 +7,8 @@ const app = express();
 app.get('/', (req, res) =>
 {
   var spawn = require('child_process').spawn,
-  ls = spawn('ls', ['-lh', '/usr']);
+  ls = spawn('ls', ['-lh', __dirname]);
+  //ls = spawn('chmod', ['+x', __dirname + '/hello']);
 
   ls.stdout.on('data', function (data) {
     console.log('stdout: ' + data.toString());
