@@ -6,20 +6,32 @@ const app = express();
 
 app.get('/', (req, res) =>
 {
-  var spawn = require('child_process').spawn,
-  ls = spawn('ls', ['-lh', __dirname]);
-  //ls = spawn('chmod', ['+x', __dirname + '/hello']);
+  const spawn = require('child_process').spawn;
+  const chmod = spawn('chmod', ['+x', __dirname + '/hello']);
+  const ls = spawn('ls', ['-lh', __dirname]);
+
+  chmod.stdout.on('data', function (data) {
+    console.log('[chmod]: ' + data.toString());
+  });
+  
+  chmod.stderr.on('data', function (data) {
+    console.error('[chmod] err: ' + data.toString());
+  });
+  
+  chmod.on('exit', function (code) {
+    console.log('[chmod] exited with code ' + code.toString());
+  });
 
   ls.stdout.on('data', function (data) {
-    console.log('stdout: ' + data.toString());
+    console.log('[ls]: ' + data.toString());
   });
   
   ls.stderr.on('data', function (data) {
-    console.error('stderr: ' + data.toString());
+    console.error('[ls] err: ' + data.toString());
   });
   
   ls.on('exit', function (code) {
-    console.log('child process exited with code ' + code.toString());
+    console.log('[ls] exited with code ' + code.toString());
   });
 
   res.send(`<html><body><pre>check the logs</pre></body></html>`);
