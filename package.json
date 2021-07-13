@@ -1,0 +1,24 @@
+{
+  "name": "boomer-server",
+  "version": "1.0.0",
+  "description": "The backend for my Bomberman clone",
+  "config": {
+    "main": "index.js"
+  },
+  "scripts": {
+    "start": "node %npm_package_config_main%"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RectangleEquals/boomer-server.git"
+  },
+  "author": "RectangleEquals@gmail.com",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/RectangleEquals/boomer-server/issues"
+  },
+  "homepage": "https://github.com/RectangleEquals/boomer-server#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
