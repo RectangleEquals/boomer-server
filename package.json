@@ -6,7 +6,7 @@
     "main": "index.js"
   },
   "scripts": {
-    "start": "node %npm_package_config_main%"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
