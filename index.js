@@ -9,6 +9,19 @@ app.get('/', (req, res) =>
   const spawn = require('child_process').spawn;
   const chmod = spawn('chmod', ['+x', __dirname + '/hello']);
   const ls = spawn('ls', ['-lh', __dirname]);
+  const hello = spawn(__dirname + '/hello');
+
+  hello.stdout.on('data', function (data) {
+    console.log('[hello]: ' + data.toString());
+  });
+  
+  hello.stderr.on('data', function (data) {
+    console.error('[hello] err: ' + data.toString());
+  });
+  
+  hello.on('exit', function (code) {
+    console.log('[hello] exited with code ' + code.toString());
+  });
 
   chmod.stdout.on('data', function (data) {
     console.log('[chmod]: ' + data.toString());
