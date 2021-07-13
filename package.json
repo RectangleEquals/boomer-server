@@ -2,9 +2,7 @@
   "name": "boomer-server",
   "version": "1.0.0",
   "description": "The backend for my Bomberman clone",
-  "config": {
-    "main": "index.js"
-  },
+  "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
